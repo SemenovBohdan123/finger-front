@@ -1,3 +1,4 @@
+import { FC, useState } from "react";
 import { Box } from "@mui/material";
 import { Toaster } from "react-hot-toast";
 
@@ -6,14 +7,19 @@ import MainPage from "./components/MainPage";
 
 import "./App.css";
 
-function App() {
+const App: FC = () => {
+  const [selectedAction, setSelectedAction] = useState<number>(1);
+
   return (
     <Box className="App">
-      <Toaster position="top-right" />
-      <Headre />
-      <MainPage />
+      <Toaster position="top-center" />
+      <Headre
+        selectedAction={selectedAction}
+        setSelectedAction={setSelectedAction}
+      />
+      <MainPage selectedAction={selectedAction} />
     </Box>
   );
-}
+};
 
 export default App;

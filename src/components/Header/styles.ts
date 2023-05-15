@@ -8,9 +8,21 @@ const useStyles = createUseStyles({
     color: "white",
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-between",
 
     "& > p": {
       marginLeft: "20px",
+    },
+  },
+
+  select_wrapper: {
+    marginRight: "20px",
+    width: "300px",
+    display: "flex",
+    alignItems: "center",
+
+    "& > p": {
+      marginRight: "20px",
     },
   },
 });
