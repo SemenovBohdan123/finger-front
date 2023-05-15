@@ -1,13 +1,15 @@
-import toast from "react-hot-toast";
 import API from "./api";
+import toast from "react-hot-toast";
 
 const UsersService = {
-  async getUsers() {
+  async getCheckImage() {
     try {
-      const response = await API.get("/user-list/");
-
+      const response = await API.get(`/user-check-img/`, {
+        responseType: "blob",
+      });
       return response;
     } catch (error) {
+      toast.error(`Something went wrong with image! ${error}`);
       console.log(error);
     }
   },
@@ -22,6 +24,7 @@ const UsersService = {
 
       return response;
     } catch (error) {
+      toast.error(`Something went wrong! ${error}`);
       console.log(error);
     }
   },
@@ -38,7 +41,7 @@ const UsersService = {
 
       return response;
     } catch (error) {
-      toast.error("Something went wrong!");
+      toast.error(`Something went wrong! ${error}`);
       console.log(error);
     }
   },

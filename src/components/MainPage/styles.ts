@@ -8,18 +8,6 @@ const useStyles = createUseStyles({
     padding: "10px",
     display: "flex",
   },
-
-  select_wrapper: {
-    width: "300px",
-    margin: {
-      top: "10px",
-      bottom: "30px",
-      right: "100px",
-    },
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
 });
 
 export default useStyles;
