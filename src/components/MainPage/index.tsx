@@ -1,45 +1,31 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Box } from "@mui/material";
 
 import CheckUser from "../CheckUser";
 import CreateUser from "../CreateUser";
-import LastResults from "../LastResults";
+import UserTable from "../UserTable";
 
 import useStyles from "./styles";
 
 const MainPage: FC<MainPageProps> = ({ selectedAction }) => {
   const classes = useStyles();
 
-  const [results, setResults] = useState<IResult[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const selectedComponent = () => {
+    switch (selectedAction) {
+      case 2:
+        return <CreateUser />;
 
-  return isLoading ? (
-    <Box
-      width="100%"
-      height="calc(100vh - 100px)"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Feather-core-loader.svg"
-        alt="Loaded"
-      />
-    </Box>
-  ) : (
+      case 3:
+        return <UserTable />;
+
+      default:
+        return <CheckUser />;
+    }
+  };
+
+  return (
     <Box className={classes.root}>
-      <LastResults data={results} />
-      <Box width="45%">
-        {selectedAction === 1 ? (
-          <CheckUser
-            setIsLoading={setIsLoading}
-            setResults={setResults}
-            results={results}
-          />
-        ) : (
-          <CreateUser />
-        )}
-      </Box>
+      <Box width="100%">{selectedComponent()}</Box>
     </Box>
   );
 };

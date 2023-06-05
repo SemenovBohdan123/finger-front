@@ -8,10 +8,7 @@ import UsersService from "../../services/users";
 
 import useStyles from "./styles";
 
-const CheckUser: FC<CheckUserProps> = ({
-  setResults: setLastResults,
-  results,
-}) => {
+const CheckUser: FC = () => {
   const classes = useStyles();
 
   const [file, setFile] = useState<File[] | null>(null);
@@ -44,17 +41,10 @@ const CheckUser: FC<CheckUserProps> = ({
     const form = new FormData();
     form.append("image", file[0]);
 
-    UsersService.checkUser(form)
+    await UsersService.checkUser(form)
       .then((response) => response?.data)
-      .then((data) => {
-        let responseResult: IResult;
-
-        if (data?.message === "User is not found") {
-          responseResult = { message: "error" };
-        } else {
-          responseResult = { ...data, message: "success" };
-        }
-        setResult(responseResult);
+      .then((data: IResult) => {
+        setResult(data);
       });
 
     getCheckIamge();
@@ -65,22 +55,6 @@ const CheckUser: FC<CheckUserProps> = ({
       return;
     }
 
-    const copyResults = [...results];
-
-    if (result?.message === "error") {
-      copyResults.unshift({
-        message: result?.message,
-        user_finger_img: file[0].name,
-      });
-    } else {
-      copyResults.unshift({
-        message: result?.message,
-        user_finger_img: file[0].name,
-        user: result?.user,
-      });
-    }
-
-    setLastResults(copyResults);
     setCheckImage(null);
     setResult(null);
     setFile(null);
@@ -106,7 +80,7 @@ const CheckUser: FC<CheckUserProps> = ({
               </div>
             )}
           </Dropzone>
-          <Box marginBottom="10px" width="100%">
+          <Box marginBottom="50px" width="40%">
             {file && (
               <Box alignItems="center" display="flex">
                 <Typography>Check image: {file[0].name}</Typography>
