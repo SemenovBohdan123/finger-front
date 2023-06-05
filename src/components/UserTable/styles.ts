@@ -2,12 +2,16 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   root: {
-    width: "calc(100% - 20px)",
-    height: "calc(100vh - 100px)",
-    background: "#fafafa",
-    padding: "10px",
+    width: "100%",
+    height: "100%",
     display: "flex",
+    alignItems: "start",
     justifyContent: "center",
+  },
+
+  deleteImg: {
+    width: "20px",
+    height: "20px",
   },
 });
 

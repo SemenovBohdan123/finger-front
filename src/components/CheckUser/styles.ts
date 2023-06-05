@@ -24,7 +24,7 @@ const useStyles = createUseStyles({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "10px",
-    width: "100%",
+    width: "40%",
     height: "160px",
     background: "#9fcaf4",
     border: "1.5px dashed black",

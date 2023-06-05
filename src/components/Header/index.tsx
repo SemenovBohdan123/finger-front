@@ -14,6 +14,8 @@ const Headre: FC<HeadreProps> = ({ setSelectedAction, selectedAction }) => {
           Сhoose what to do
         </Typography>
         <Select
+          variant="standard"
+          sx={{ color: "white" }}
           onChange={(event) => setSelectedAction(Number(event.target.value))}
           value={selectedAction}
           fullWidth
@@ -21,6 +23,7 @@ const Headre: FC<HeadreProps> = ({ setSelectedAction, selectedAction }) => {
         >
           <MenuItem value={1}>Check user</MenuItem>
           <MenuItem value={2}>Create user</MenuItem>
+          <MenuItem value={3}>User table</MenuItem>
         </Select>
       </Box>
     </div>

@@ -17,7 +17,7 @@ const useStyles = createUseStyles({
 
   select_wrapper: {
     marginRight: "20px",
-    width: "300px",
+    width: "400px",
     display: "flex",
     alignItems: "center",
 

@@ -31,7 +31,7 @@ const CreateUser: FC = () => {
       });
 
     if (user) {
-      toast.error("Такий юзер вже існує");
+      toast.error("Such a user already exists");
       setIsLoading(false);
       return;
     }
@@ -68,7 +68,12 @@ const CreateUser: FC = () => {
           <Typography marginBottom="10px">Fingerprint</Typography>
           <TextField type="file" {...register("img", { required: true })} />
         </Box>
-        <TextField fullWidth onLoad={() => setIsLoading(false)} type="submit" />
+        <TextField
+          value="Submit"
+          fullWidth
+          onLoad={() => setIsLoading(false)}
+          type="submit"
+        />
       </form>
     </Box>
   );
